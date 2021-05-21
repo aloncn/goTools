@@ -8,7 +8,6 @@ import (
 
 const int32Max = 2147483647
 
-var IntUuid = generator{}
 // Generator ..
 type generator struct {
 	id      uint16
@@ -16,7 +15,7 @@ type generator struct {
 }
 
 // New creates a new instance of uuid int generator
-func New() *generator {
+func DigitNew() *generator {
 	return &generator {
 		id:      uint16(rand.Intn(511)),
 		counter: 0,
