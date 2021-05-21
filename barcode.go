@@ -18,7 +18,7 @@ type Graphic struct {
 	ToImg bool
 }
 
-func New (p *Graphic) *Graphic {
+func GraphicNew (p *Graphic) *Graphic {
 	return p
 }
 func (p *Graphic) SetContext(context string) *Graphic {
