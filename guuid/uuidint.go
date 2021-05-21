@@ -8,22 +8,23 @@ import (
 
 const int32Max = 2147483647
 
+var IntUuid = generator{}
 // Generator ..
-type Generator struct {
+type generator struct {
 	id      uint16
 	counter int32
 }
 
 // New creates a new instance of uuid int generator
-func IntUuid() Generator {
-	return Generator{
+func New() *generator {
+	return &generator {
 		id:      uint16(rand.Intn(511)),
 		counter: 0,
 	}
 }
 
 // Generate generates a new random 16 digit number
-func (u *Generator) Generate() int64 {
+func (u *generator) Gen () int64 {
 	unixTimeNow := time.Now().Unix()
 	timeMask := ((unixTimeNow + 1) & 0x1ffffffff) * 2097152
 	uid := int64((u.id & 0x1ff) * 4096)
@@ -37,7 +38,7 @@ func (u *Generator) Generate() int64 {
 }
 
 // GenerateFormatted generates a new random 16 digit number in the format xxxx-xxxx-xxxx-xxxx
-func (u *Generator) Gen() string {
-	randString := fmt.Sprintf("%16d", u.Generate())
+func (u *generator) GenFormat() string {
+	randString := fmt.Sprintf("%16d", u.Gen())
 	return randString[:4] + "-" + randString[4:8] + "-" + randString[8:12] + "-" + randString[12:16]
 }
