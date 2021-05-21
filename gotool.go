@@ -1,5 +1,5 @@
-package gtl
+package gotool
 
-func Version () string {
-	return "v0.0.2"
+func Hah () string {
+	return "ha ~_~ ha"
 }

@@ -1,6 +1,6 @@
-package T
+package gotool
 
-var T = third{}
+var Third = third{}
 type third struct {}
 
 func (t *third)SayHi() string {

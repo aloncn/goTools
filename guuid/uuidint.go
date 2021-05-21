@@ -1,4 +1,4 @@
-package uuidint
+package guuid
 
 import (
 	"fmt"
@@ -15,7 +15,7 @@ type Generator struct {
 }
 
 // New creates a new instance of uuid int generator
-func New() Generator {
+func IntUuid() Generator {
 	return Generator{
 		id:      uint16(rand.Intn(511)),
 		counter: 0,
@@ -37,7 +37,7 @@ func (u *Generator) Generate() int64 {
 }
 
 // GenerateFormatted generates a new random 16 digit number in the format xxxx-xxxx-xxxx-xxxx
-func (u *Generator) GenerateFormatted() string {
+func (u *Generator) Gen() string {
 	randString := fmt.Sprintf("%16d", u.Generate())
 	return randString[:4] + "-" + randString[4:8] + "-" + randString[8:12] + "-" + randString[12:16]
 }
